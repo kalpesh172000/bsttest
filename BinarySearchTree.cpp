@@ -29,7 +29,7 @@ class bst
 	void inorder_traversal(node *curr);
 	void search(node *&,int);  //this func' gets data and check wether the data present or not
 	void postorder_traversal(node *curr);//returns postorder traversal
-
+    void preorder_traversal(node *curr);
 public:
 	bst()
 	{
@@ -209,7 +209,22 @@ void bst :: postorder_traversal(node *curr)
     postorder_traversal(curr->right); // Traverse right subtree
 	cout << curr->data << " "; // Visit node
 }
+void bst::preorder_traversal(node *curr)
+{
+	if(curr == NULL) // Base case
+	         return;
+    // cout<<"hello"<<endl;
+	else{
+	cout << curr->data << " "; 
+	//cout<<"hello";// Visit node
+	preorder_traversal(curr->left); // Traverse left subtree
+    preorder_traversal(curr->right);
+	}
+}
+    
 
+
+//void bst::mirror(node *curr)
 
 void bst::search(node *& curr,int data)
 {
@@ -298,7 +313,7 @@ void bst::menu()
             case 6:
             	inorder_traversal(root);
 				break;
-			case 7:
+			case 7:preorder_traversal(root);
                 break;
 			case 8:
 				postorder_traversal(root);
